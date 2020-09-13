@@ -6,9 +6,9 @@ RUN ln -s /usr/bin/python3 /usr/bin/python & \
 
 FROM ubuntu-base as miniconda-base
 
+ARG GROUP_ID=1000
+ARG USER_ID=1000
 ARG USER_NAME=user
-ARG USER_ID
-ARG GROUP_ID
 
 RUN addgroup --gid $GROUP_ID $USER_NAME
 RUN adduser --disabled-password --gecos '' --uid $USER_ID --gid $GROUP_ID $USER_NAME
