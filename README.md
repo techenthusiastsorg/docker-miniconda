@@ -1,4 +1,6 @@
-# Build
+# Miniconda Dockerfile
+
+![Publish Docker image](https://github.com/techenthusiastsorg/docker-miniconda/workflows/Publish%20Docker%20image/badge.svg)
 
 ## Build the base
 
