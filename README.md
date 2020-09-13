@@ -3,19 +3,30 @@
 ## Build the base
 
 ```bash
-docker build -t playground --build-arg USER_ID=$(id -u)   --build-arg GROUP_ID=$(id -g) --target base .
+docker build -t ubuntu-base \
+  --build-arg USER_ID=$(id -u) \
+  --build-arg GROUP_ID=$(id -g) \
+  --target ubuntu-base .
 ```
 
 ## Build the playground
 
 ```bash
-docker build -t playground --build-arg USER_ID=$(id -u)   --build-arg GROUP_ID=$(id -g) --target playground .
+docker build -t miniconda-base \
+  --build-arg USER_ID=$(id -u) \
+  --build-arg GROUP_ID=$(id -g) \
+  --target playground .
 ```
 
 ## Run
 
 ```bash
-docker run -it --name playground -p 8888:8888 -v $(pwd):/home/user/notebooks --workdir /home/user playground:latest /bin/bash 
+docker run -it \
+  -p 8888:8888 \
+  --name miniconda-playground \
+  -v $(pwd):/home/user/notebooks \
+  --workdir /home/user \
+  miniconda-base:latest /bin/bash
 ```
 
 Inside the container now:
