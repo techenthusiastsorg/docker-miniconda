@@ -1,11 +1,11 @@
 name: Publish Docker image
 
+# https://github.community/t/how-to-trigger-an-action-on-push-or-pull-request-but-not-both/16662
 on:
   schedule:
     - cron: "0 10 * * *" # everyday at 10am
   tags:
-      - "v*.*.*"
-  # https://github.community/t/how-to-trigger-an-action-on-push-or-pull-request-but-not-both/16662
+    - "v*.*.*"
   push:
     branches:
       - master
