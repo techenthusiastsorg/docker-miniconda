@@ -4,14 +4,14 @@ name: Publish Docker image
 on:
   # Trigger the workflow on push or pull request,
   # but only for the master branch
+  schedule:
+    - cron: "0 10 * * *" # nightly at 10am
   push:
     branches:
       - master
   pull_request:
     branches:
       - master
-  #schedule:
-  #  - cron: "0 10 * * *" # everyday at 10am
   #tags:
   #  - "v*.*.*"
   #push:
