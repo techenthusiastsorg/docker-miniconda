@@ -36,7 +36,7 @@ Inside the container now:
 ```bash
 user@4dd247b0f5e3:~$ source miniconda/bin/activate
 (base) user@4dd247b0f5e3:~$ conda install jupyter -y
-(base) user@4dd247b0f5e3:~$ jupyter notebook --notebook-dir=/home/user/notebooks --ip='*' --port=8888 --no-browser 
+(base) user@4dd247b0f5e3:~$ jupyter notebook --notebook-dir=/home/user/notebooks --ip='*' --port=8888 --no-browser
 ```
 or
 ```bash
