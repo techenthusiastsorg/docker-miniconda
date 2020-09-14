@@ -3,12 +3,15 @@ name: Publish Docker image
 on:
   schedule:
     - cron: "0 10 * * *" # everyday at 10am
+  tags:
+      - "v*.*.*"
+  # https://github.community/t/how-to-trigger-an-action-on-push-or-pull-request-but-not-both/16662
   push:
     branches:
-      - "**"
-    tags:
-      - "v*.*.*"
+      - master
   pull_request:
+    branches:
+      - master
 
 jobs:
   push_to_registries:
@@ -21,7 +24,6 @@ jobs:
         name: Prepare tags
         id: prep
         run: |
-          echo "repository owner: ${{ github.repository_owner }}"
           for DOCKER_IMAGE in "techenthusiasts/miniconda" "ghcr.io/techenthusiasts/miniconda"; do
             VERSION=noop
             if [ "${{ github.event_name }}" = "schedule" ]; then
@@ -45,6 +47,8 @@ jobs:
               TAGS="$TAGS,${DOCKER_IMAGE}:sha-${GITHUB_SHA::8}"
             fi
           done
+          echo "repository owner: ${{ github.repository_owner }}"
+          echo "image tags: ${TAGS}"
           echo ::set-output name=version::${VERSION}
           echo ::set-output name=tags::${TAGS}
           echo ::set-output name=created::$(date -u +'%Y-%m-%dT%H:%M:%SZ')
