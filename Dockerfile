@@ -23,3 +23,4 @@ RUN bash miniconda.sh -b -p $HOME/miniconda && rm miniconda.sh
 
 RUN bash -c "set -e; source miniconda/bin/activate; conda update -y -n base -c defaults conda"
 
+
