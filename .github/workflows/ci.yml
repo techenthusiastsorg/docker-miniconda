@@ -36,7 +36,7 @@ jobs:
         name: Prepare tags
         id: prep
         run: |
-          for DOCKER_IMAGE in "techenthusiasts/miniconda" "ghcr.io/techenthusiasts/miniconda"; do
+          for DOCKER_IMAGE in "techenthusiasts/miniconda"; do # "ghcr.io/techenthusiasts/miniconda"; do
             VERSION=noop
             if [ "${{ github.event_name }}" = "schedule" ]; then
               VERSION=nightly
